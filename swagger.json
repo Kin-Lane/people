@@ -17,8 +17,8 @@
   "paths": {
     "people/": {
       "get": {
-        "summary": "retrieves all peoples",
-        "description": "pulls all peoples, with filter by keyword",
+        "summary": "retrieves all the beautiful people",
+        "description": "pulls all people, with filter by keyword",
         "operationId": "getPeoples",
         "parameters": [
           {
@@ -51,12 +51,19 @@
         "operationId": "addPeople",
         "parameters": [
           {
-            "name": "name",
+            "name": "lastname",
             "in": "query",
             "description": "name of the people",
             "required": true,
             "type": "string"
           },
+          {
+            "name": "firstname",
+            "in": "query",
+            "description": "name of the people",
+            "required": true,
+            "type": "string"
+          },          
           {
             "name": "description",
             "in": "query",
@@ -140,12 +147,19 @@
             "type": "string"
           },
           {
-            "name": "name",
+            "name": "firstname",
             "in": "query",
-            "description": "name of the people",
+            "description": " first name of the people",
             "required": true,
             "type": "string"
           },
+          {
+            "name": "lastname",
+            "in": "query",
+            "description": "last name of the people",
+            "required": true,
+            "type": "string"
+          },          
           {
             "name": "description",
             "in": "query",
@@ -218,11 +232,16 @@
   "definitions": {
     "people": {
       "properties": {
-        "name": {
+        "firstname": {
           "description": "name of the people",
           "type": "string",
           "format": "label"
         },
+        "lastname": {
+          "description": "name of the people",
+          "type": "string",
+          "format": "label"
+        },        
         "description": {
           "description": "description of the people",
           "type": "string"
