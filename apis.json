@@ -1,7 +1,7 @@
 {
   "name": "Kin Lane - People",
-  "description": "This is my default people API, using it to manage posts in a single API. It is a Stack Network API resource, with supporting docker container for the API.",
-  "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-people-icon.png",
+  "description": "This is my default people API, using it to manage people via a single API. It is a Stack Network API resource, with supporting docker container for the API.",
+  "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-users-male-female.png",
   "tags": [
     "application programming interface",
     "API",
@@ -15,7 +15,7 @@
     {
       "name": "People",
       "description": "A people API resource.",
-      "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-people-icon.png",
+      "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-users-male-female.png",
       "humanURL": "https://kin-lane.github.io/people/",
       "baseURL": "http://people.api.kinlane.com",
       "tags": [
