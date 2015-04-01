@@ -2,9 +2,9 @@
   "swagger": "2.0",
   "info": {
     "title": "People",
-    "description": "This is a people api",
+    "description": "This is an people for all my people entries. I use a single people system to manage all my sites. Based upon tagging, I then publish each post out to its respective Github Page based repo.",
     "termsOfService": "http://stack.network/terms-of-service.html",
-    "version": "v1"
+    "version": "v2"
   },
   "host": "people.api.kinlane.com",
   "basePath": "/",
@@ -12,15 +12,29 @@
     "http"
   ],
   "produces": [
-    "peoplelication/json"
+    "application/json"
   ],
   "paths": {
-    "people/": {
+    "/people/": {
       "get": {
-        "summary": "retrieves all the beautiful people",
-        "description": "pulls all people, with filter by keyword",
+        "summary": "get people",
+        "description": "retrieves all people, with filter by keyword",
         "operationId": "getPeoples",
         "parameters": [
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "query",
             "in": "query",
@@ -41,47 +55,168 @@
           }
         },
         "tags": [
-          "people",
-          "peopleging"
+          "Peoples"
         ]
       },
       "post": {
-        "summary": "add people",
-        "description": "add a new people",
+        "summary": "add new people",
+        "description": "Adds a new people",
         "operationId": "addPeople",
         "parameters": [
           {
-            "name": "lastname",
-            "in": "query",
-            "description": "name of the people",
+            "name": "appid",
+            "in": "formData",
+            "description": "your appid for accessing the people",
             "required": true,
             "type": "string"
           },
           {
-            "name": "firstname",
-            "in": "query",
-            "description": "name of the people",
+            "name": "appkey",
+            "in": "formData",
+            "description": "your appkey for accessing the people",
             "required": true,
             "type": "string"
-          },          
+          },
           {
-            "name": "description",
-            "in": "query",
-            "description": "description of the people",
-            "required": true,
+            "name": "name",
+            "in": "formData",
+            "description": "name of people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "details",
+            "in": "formData",
+            "description": "details for the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "summary",
+            "in": "formData",
+            "description": "sumary of the people",
+            "required": false,
             "type": "string"
           },
           {
             "name": "url",
-            "in": "query",
-            "description": "url for the people",
+            "in": "formData",
+            "description": "unique url for the people",
             "required": true,
             "type": "string"
           },
           {
-            "name": "tags",
+            "name": "phone",
+            "in": "formData",
+            "description": "phone for the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email for the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "formData",
+            "description": "primary address of the people",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "city",
+            "in": "formData",
+            "description": "primary city of the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "in": "formData",
+            "description": "primary state of the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "postal_code",
+            "in": "formData",
+            "description": "primary postal code of the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "country",
+            "in": "formData",
+            "description": "primary country of the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "rank",
+            "in": "formData",
+            "description": "ranking for the people",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "location",
+            "in": "formData",
+            "description": "primary location of the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "photo",
+            "in": "formData",
+            "description": "primary photo of the people",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "people response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/people"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Peoples"
+        ]
+      }
+    },
+    "/people/{people_id}/": {
+      "get": {
+        "summary": "get people",
+        "description": "Returns the an people",
+        "operationId": "getPeople",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "the unique id for people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
             "in": "query",
-            "description": "tags for the people",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
             "required": true,
             "type": "string"
           }
@@ -98,133 +233,1787 @@
           }
         },
         "tags": [
-          "people",
-          "peopleging"
-        ]
-      }
-    },
-    "people/{slug}": {
-      "get": {
-        "summary": "Retrieve a people using its slug",
-        "description": "Returns the people detail",
-        "operationId": "getPeople",
-        "parameters": [
-          {
-            "name": "slug",
-            "in": "path",
-            "description": "slug for the people, notice this is in the path, not a query variable",
-            "required": "true",
-            "type": "integer",
-            "format": "id"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "people response",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/people"
-              }
-            }
-          }
-        },
-        "tags": [
-          "people",
-          "peopleging"
+          "Peoples"
         ]
       },
       "put": {
         "summary": "update people",
-        "description": "update people",
+        "description": "Update People",
         "operationId": "updatePeople",
         "parameters": [
           {
-            "name": "slug",
+            "name": "people_id",
             "in": "path",
-            "description": "unique slug for the people",
+            "description": "the unique id for the people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "formData",
+            "description": "your appid for accessing the people",
             "required": true,
             "type": "string"
           },
           {
-            "name": "firstname",
-            "in": "query",
-            "description": " first name of the people",
+            "name": "appkey",
+            "in": "formData",
+            "description": "your appkey for accessing the people",
             "required": true,
             "type": "string"
           },
           {
-            "name": "lastname",
-            "in": "query",
-            "description": "last name of the people",
+            "name": "name",
+            "in": "formData",
+            "description": "name of people",
             "required": true,
             "type": "string"
-          },          
+          },
+          {
+            "name": "details",
+            "in": "formData",
+            "description": "details for the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "summary",
+            "in": "formData",
+            "description": "sumary of the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "url",
+            "in": "formData",
+            "description": "unique url for the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "formData",
+            "description": "phone for the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "email for the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "formData",
+            "description": "primary address of the people",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "city",
+            "in": "formData",
+            "description": "primary city of the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "in": "formData",
+            "description": "primary state of the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "postal_code",
+            "in": "formData",
+            "description": "primary postal code of the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "country",
+            "in": "formData",
+            "description": "primary country of the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "rank",
+            "in": "formData",
+            "description": "ranking for the people",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "location",
+            "in": "formData",
+            "description": "primary location of the people",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "photo",
+            "in": "formData",
+            "description": "primary photo of the people",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "people response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/people"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Peoples"
+        ]
+      },
+      "delete": {
+        "summary": "delete people",
+        "description": "Deletes An People",
+        "operationId": "deletePeople",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "the unique id for the people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "people response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/people"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Peoples"
+        ]
+      }
+    },
+    "/people/{people_id}/tags/": {
+      "get": {
+        "summary": "retrieve people tags",
+        "description": "Returns the tags for an people",
+        "operationId": "getpeopleTags",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Tags Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tag"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tags"
+        ]
+      },
+      "post": {
+        "summary": "add tag to people",
+        "description": "add tag for people",
+        "operationId": "addPeopleTag",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "formData",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "formData",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "tag",
+            "in": "formData",
+            "description": "tag name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tag"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tags"
+        ]
+      }
+    },
+    "/people/{people_id}/tags/{tag}": {
+      "delete": {
+        "summary": "delete a people tag",
+        "description": "deletes a tag applied to people",
+        "operationId": "deletepeopleTag",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "tag",
+            "in": "path",
+            "description": "tag to remove from people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Tag Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tag"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tags"
+        ]
+      }
+    },
+    "/people/{people_id}/notes/": {
+      "get": {
+        "summary": "retrieve an APIs notes",
+        "description": "Returns the notes for an API",
+        "operationId": "getAPINotes",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the API",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the API",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the API",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "API Notes Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/note"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Notes"
+        ]
+      },
+      "post": {
+        "summary": "add an People note",
+        "description": "Add a note for the people",
+        "operationId": "addPeopleNote",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the api item",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "formData",
+            "description": "your appid for accessing the API",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "formData",
+            "description": "your appkey for accessing the API",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "type of the note",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "note",
+            "in": "formData",
+            "description": "the full text of note",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "API Note Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/note"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Notes"
+        ]
+      }
+    },
+    "/people/{people_id}/notes/{note_id}": {
+      "delete": {
+        "summary": "delete an people note",
+        "description": "Deletes a note for a people",
+        "operationId": "deleteAPINote",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the API",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the API",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the API",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "note_id",
+            "in": "path",
+            "description": "id for the note",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "API Note Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/note"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Notes"
+        ]
+      }
+    },
+    "/people/{people_id}/apis/": {
+      "get": {
+        "summary": "retrieve people APIs",
+        "description": "Returns the APIs for an people",
+        "operationId": "getAPIsForPeople",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People API Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/api"
+              }
+            }
+          }
+        },
+        "tags": [
+          "APIs"
+        ]
+      },
+      "post": {
+        "summary": "add API to people",
+        "description": "add tag for people",
+        "operationId": "addPeopleTag",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "formData",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "formData",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "api_id",
+            "in": "formData",
+            "description": "API unique ID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People API Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/api"
+              }
+            }
+          }
+        },
+        "tags": [
+          "APIs"
+        ]
+      }
+    },
+    "/people/{people_id}/apis/{api_id}": {
+      "delete": {
+        "summary": "delete a people API",
+        "description": "deletes a API applied to people",
+        "operationId": "deletePeopleAPI",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "api_id",
+            "in": "path",
+            "description": "unique ID for API to remove from people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People A Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/api"
+              }
+            }
+          }
+        },
+        "tags": [
+          "APIs"
+        ]
+      }
+    },
+    "/people/{people_id}/buildingblocks/": {
+      "get": {
+        "summary": "retrieve people building blocks",
+        "description": "Returns the building blocks for an people",
+        "operationId": "getPeopleBuildingBlocks",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Tags Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/buildingblock"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Building Blocks"
+        ]
+      },
+      "post": {
+        "summary": "add building block to people",
+        "description": "add building block for people",
+        "operationId": "addPeopleBuildingBlock",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "formData",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "formData",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "building_block_id",
+            "in": "formData",
+            "description": "building block unique id",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "tools_id",
+            "in": "formData",
+            "description": "tool id for the building block",
+            "required": false,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "url",
+            "in": "formData",
+            "description": "url for the building block",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Building Block Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/buildingblock"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Building Blocks"
+        ]
+      }
+    },
+    "/people/{people_id}/buildingblocks/{building_block_id}": {
+      "delete": {
+        "summary": "delete a people building block",
+        "description": "deletes a building block applied to people",
+        "operationId": "deletepeopleTag",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "building_block_id",
+            "in": "path",
+            "description": "building block to remove from people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Building Block Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tag"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Building Blocks"
+        ]
+      }
+    },
+    "/people/{people_id}/tools/": {
+      "get": {
+        "summary": "retrieve people tools",
+        "description": "Returns the tols for an people",
+        "operationId": "getPeopleTools",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Tool Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tool"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tools"
+        ]
+      },
+      "post": {
+        "summary": "add tool to people",
+        "description": "add tool for people",
+        "operationId": "addPeopleTool",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "formData",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "formData",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "tool_id",
+            "in": "formData",
+            "description": "the unique tool id",
+            "required": false,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "url",
+            "in": "formData",
+            "description": "url for the tool",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Tool Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tool"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tools"
+        ]
+      }
+    },
+    "/people/{people_id}/tools/{tool_id}": {
+      "delete": {
+        "summary": "delete a people tool",
+        "description": "deletes a tool applied to people",
+        "operationId": "getPeopleToo",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "tool_id",
+            "in": "path",
+            "description": "tool to remove from people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Tool Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tool"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tools"
+        ]
+      }
+    },
+    "/people/{people_id}/images/": {
+      "get": {
+        "summary": "retrieve people images",
+        "description": "Returns the images for an people",
+        "operationId": "getPeopleImages",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Images Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/image"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Images"
+        ]
+      },
+      "post": {
+        "summary": "add image to people",
+        "description": "add image for people",
+        "operationId": "addPeopleImage",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "formData",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "formData",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "in": "formData",
+            "description": "image path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "image type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "image name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Image Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/image"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Images"
+        ]
+      }
+    },
+    "/people/{people_id}/images/{image_id}": {
+      "delete": {
+        "summary": "delete a people image",
+        "description": "deletes a image applied to people",
+        "operationId": "deletePeopleImage",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "image_id",
+            "in": "path",
+            "description": "id for the image to remove from people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Image Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/image"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Images"
+        ]
+      }
+    },
+    "/people/{people_id}/locations/": {
+      "get": {
+        "summary": "retrieve people locations",
+        "description": "Returns the locations for an people",
+        "operationId": "getPeopleLocations",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Locations Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/locations"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Locations"
+        ]
+      },
+      "post": {
+        "summary": "add location to people",
+        "description": "add location for people",
+        "operationId": "addPeopleLocation",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "formData",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "formData",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "description",
+            "in": "formData",
+            "description": "location description",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "address1",
+            "in": "formData",
+            "description": "location address 1",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "address2",
+            "in": "formData",
+            "description": "location address 2",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "city",
+            "in": "formData",
+            "description": "location city",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "state_code",
+            "in": "formData",
+            "description": "location state code",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "zip_code",
+            "in": "formData",
+            "description": "location zip code",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "country_code",
+            "in": "formData",
+            "description": "location country code",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "latitude",
+            "in": "formData",
+            "description": "location latitude",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "longitude",
+            "in": "formData",
+            "description": "location longitude",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Location Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/locations"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Locations"
+        ]
+      }
+    },
+    "/people/{people_id}/locations/{location_id}": {
+      "delete": {
+        "summary": "delete a people tag",
+        "description": "deletes a tag applied to people",
+        "operationId": "deletepeopleTag",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appid",
             "in": "query",
-            "description": "description of the people",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "location_id",
+            "in": "path",
+            "description": "id of location to remove from people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Tag Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tag"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Locations"
+        ]
+      }
+    },
+    "/people/{people_id}/logs/": {
+      "get": {
+        "summary": "retrieve people logs",
+        "description": "Returns the logs for an people",
+        "operationId": "getPeopleLogs",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Log Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/log"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Logs"
+        ]
+      },
+      "post": {
+        "summary": "add log to people",
+        "description": "add tag for people",
+        "operationId": "addPeopleTag",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "formData",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "formData",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "type of log entry",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "details",
+            "in": "formData",
+            "description": "log details",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Log Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/log"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Logs"
+        ]
+      }
+    },
+    "/people/{people_id}/logs/{log_id}": {
+      "delete": {
+        "summary": "delete a people log",
+        "description": "deletes a log applied to people",
+        "operationId": "deletePeopleLog",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "log_id",
+            "in": "path",
+            "description": "id for the log",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Log Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/log"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Logs"
+        ]
+      }
+    },
+    "/people/{people_id}/screenshots/": {
+      "get": {
+        "summary": "retrieve people screenshots",
+        "description": "Returns the screenshots for an people",
+        "operationId": "getPeopleScreenshots",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Screenshot Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/screenshot"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Screenshots"
+        ]
+      },
+      "post": {
+        "summary": "add screenshots to people",
+        "description": "add screenshots for people",
+        "operationId": "addPeopleTag",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "formData",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "formData",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "in": "formData",
+            "description": "image path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "image type",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "image name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Screenshot Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/screenshot"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Screenshots"
+        ]
+      }
+    },
+    "/people/{people_id}/screenshots/{screenshot_id}": {
+      "delete": {
+        "summary": "delete a people screenshot",
+        "description": "deletes a screenshot applied to people",
+        "operationId": "deletePeopleScreenshot",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "screenshot_id",
+            "in": "path",
+            "description": "id of the screenshot to remove from people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People Tag Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/screenshot"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Screenshots"
+        ]
+      }
+    },
+    "/people/{people_id}/urls/": {
+      "get": {
+        "summary": "retrieve people url",
+        "description": "Returns the tags for an people",
+        "operationId": "getpeopleTags",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People URL Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/url"
+              }
+            }
+          }
+        },
+        "tags": [
+          "URLs"
+        ]
+      },
+      "post": {
+        "summary": "add tag to people",
+        "description": "add tag for people",
+        "operationId": "addPeopleTag",
+        "parameters": [
+          {
+            "name": "people_id",
+            "in": "path",
+            "description": "id for the people",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "formData",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "formData",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "type of url",
             "required": true,
             "type": "string"
           },
           {
             "name": "url",
-            "in": "query",
-            "description": "url for the people",
+            "in": "formData",
+            "description": "the url",
             "required": true,
             "type": "string"
           },
           {
-            "name": "tags",
-            "in": "query",
-            "description": "tags for the people",
+            "name": "name",
+            "in": "formData",
+            "description": "a name for the url",
             "required": true,
             "type": "string"
           }
         ],
         "responses": {
           "200": {
-            "description": "people response",
+            "description": "People URL Response",
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/people"
+                "$ref": "#/definitions/url"
               }
             }
           }
         },
         "tags": [
-          "people",
-          "peopleging"
+          "URLs"
         ]
-      },
+      }
+    },
+    "/people/{people_id}/urls/{url_id}": {
       "delete": {
-        "summary": "delete people",
-        "description": "deletes an people",
-        "operationId": "deletePeople",
+        "summary": "delete a people url",
+        "description": "deletes a tag applied to people",
+        "operationId": "deletepeopleTag",
         "parameters": [
           {
-            "name": "slug",
+            "name": "people_id",
             "in": "path",
-            "description": "unique slug for the people",
+            "description": "id for the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the people",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "url_id",
+            "in": "path",
+            "description": "id for the url",
             "required": true,
             "type": "string"
           }
         ],
         "responses": {
           "200": {
-            "description": "people response",
+            "description": "People URL Response",
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/people"
+                "$ref": "#/definitions/url"
               }
             }
           }
         },
         "tags": [
-          "people",
-          "peopleging"
+          "URLs"
         ]
       }
     }
@@ -232,46 +2021,375 @@
   "definitions": {
     "people": {
       "properties": {
-        "firstname": {
-          "description": "name of the people",
-          "type": "string",
-          "format": "label"
+        "people_id": {
+          "description": "unique id of the people",
+          "type": "integer",
+          "format": "id"
         },
-        "lastname": {
+        "name": {
           "description": "name of the people",
-          "type": "string",
-          "format": "label"
-        },        
-        "description": {
-          "description": "description of the people",
+          "type": "string"
+        },
+        "details": {
+          "description": "details for the people",
+          "type": "string"
+        },
+        "summary": {
+          "description": "summary of the people",
+          "type": "string"
+        },
+        "post_date": {
+          "description": "date the people was posted",
           "type": "string"
         },
         "url": {
-          "description": "url for the people",
+          "description": "primary URL for the people",
           "type": "string"
         },
-        "tags": {
-          "description": "tags for the people",
+        "phone": {
+          "description": "primary phone for the people",
           "type": "string"
         },
-        "slug": {
-          "description": "slug for the people",
+        "email": {
+          "description": "primary email for the people",
+          "type": "string"
+        },
+        "address": {
+          "description": "primary address for the organizaiton",
+          "type": "string"
+        },
+        "city": {
+          "description": "primary city for the organizaiton",
+          "type": "string"
+        },
+        "state": {
+          "description": "primary state for the organizaiton",
+          "type": "string"
+        },
+        "postal_code": {
+          "description": "primary postal code for the organizaiton",
+          "type": "string"
+        },
+        "country": {
+          "description": "primary country for the organizaiton",
+          "type": "string"
+        },
+        "rank": {
+          "description": "rank for the organizaiton",
+          "type": "string"
+        },
+        "location": {
+          "description": "primary location for the organizaiton",
+          "type": "string"
+        },
+        "photo": {
+          "description": "primary photo for the organizaiton",
+          "type": "string"
+        }
+      }
+    },
+    "api": {
+      "properties": {
+        "api_id": {
+          "description": "id for the api item",
+          "type": "string",
+          "format": "label"
+        },
+        "title": {
+          "description": "title of the api item",
+          "type": "string"
+        },
+        "link": {
+          "description": "url for the api item",
+          "type": "string"
+        },
+        "item_date": {
+          "description": "date applied to the api item",
+          "type": "string"
+        },
+        "details": {
+          "description": "raw details for the api item",
+          "type": "string",
+          "format": "id"
+        },
+        "status": {
+          "description": "status of the api item",
+          "type": "string",
+          "format": "id"
+        },
+        "public_comment": {
+          "description": "any public comment for the api item",
+          "type": "string",
+          "format": "id"
+        },
+        "original_date": {
+          "description": "orignal date for the api item",
+          "type": "string",
+          "format": "datetime"
+        },
+        "author": {
+          "description": "author for the api item",
+          "type": "string",
+          "format": "id"
+        },
+        "processed": {
+          "description": "has the api item been processed",
+          "type": "string",
+          "format": "id"
+        },
+        "domain": {
+          "description": "root domain for the api item",
+          "type": "string",
+          "format": "id"
+        },
+        "screenshot_url": {
+          "description": "screenshot url for the api item",
+          "type": "string",
+          "format": "id"
+        },
+        "resolved_url": {
+          "description": "resolved url for the api item",
+          "type": "string",
+          "format": "id"
+        },
+        "weekly_summary": {
+          "description": "include in weekly summary",
+          "type": "string",
+          "format": "id"
+        },
+        "weekly_roundup": {
+          "description": "include in weekly roundup",
           "type": "string",
           "format": "id"
         }
       }
     },
-    "errorModel": {
-      "required": [
-        "code",
-        "message"
-      ],
+    "tag": {
       "properties": {
-        "code": {
+        "tag_id": {
+          "description": "id for the tag",
           "type": "integer",
-          "format": "int32"
+          "format": "id"
         },
-        "message": {
+        "tag": {
+          "description": "text tag",
+          "type": "string"
+        },
+        "api_count": {
+          "description": "number of items api with tag",
+          "type": "integer"
+        }
+      }
+    },
+    "note": {
+      "properties": {
+        "note_id": {
+          "description": "id for the api item",
+          "type": "integer",
+          "format": "id"
+        },
+        "type": {
+          "description": "type of note",
+          "type": "string"
+        },
+        "note": {
+          "description": "text of note",
+          "type": "string"
+        }
+      }
+    },
+    "url": {
+      "properties": {
+        "note_id": {
+          "description": "id for the API",
+          "type": "integer",
+          "format": "id"
+        },
+        "type": {
+          "description": "the type of url",
+          "type": "string"
+        },
+        "url": {
+          "description": "url for the url",
+          "type": "string"
+        },
+        "name": {
+          "description": "name of the url",
+          "type": "string"
+        }
+      }
+    },
+    "image": {
+      "properties": {
+        "api_id": {
+          "description": "id for the API",
+          "type": "integer",
+          "format": "id"
+        },
+        "image_id": {
+          "description": "id for the image",
+          "type": "integer",
+          "format": "id"
+        },
+        "name": {
+          "description": "name of the image",
+          "type": "string"
+        },
+        "path": {
+          "description": "path of the image",
+          "type": "string"
+        },
+        "type": {
+          "description": "type of image",
+          "type": "string"
+        }
+      }
+    },
+    "screenshot": {
+      "properties": {
+        "api_id": {
+          "description": "id for the API",
+          "type": "integer",
+          "format": "id"
+        },
+        "screenshot_id": {
+          "description": "id for the screenshot",
+          "type": "integer",
+          "format": "id"
+        },
+        "name": {
+          "description": "name of the screenshot",
+          "type": "string"
+        },
+        "path": {
+          "description": "path of the screenshot",
+          "type": "string"
+        },
+        "type": {
+          "description": "type of screenshot",
+          "type": "string"
+        }
+      }
+    },
+    "buildingblock": {
+      "properties": {
+        "api_id": {
+          "description": "id for the API",
+          "type": "integer",
+          "format": "id"
+        },
+        "building_block_api": {
+          "description": "id for the building block",
+          "type": "integer",
+          "format": "id"
+        },
+        "people_id": {
+          "description": "id for the people",
+          "type": "integer",
+          "format": "id"
+        },
+        "tool_id": {
+          "description": "id for the tool",
+          "type": "integer",
+          "format": "id"
+        },
+        "url": {
+          "description": "url of the building block",
+          "type": "string"
+        }
+      }
+    },
+    "log": {
+      "properties": {
+        "api_id": {
+          "description": "id for the API",
+          "type": "integer",
+          "format": "id"
+        },
+        "type": {
+          "description": "type of log",
+          "type": "string"
+        },
+        "note": {
+          "description": "text of note",
+          "type": "string"
+        },
+        "details": {
+          "description": "details of log",
+          "type": "string"
+        },
+        "log_date": {
+          "description": "log date",
+          "type": "string"
+        }
+      }
+    },
+    "tool": {
+      "properties": {
+        "tool_id": {
+          "description": "id for the tool",
+          "type": "integer",
+          "format": "id"
+        },
+        "name": {
+          "description": "name of tool",
+          "type": "string"
+        },
+        "details": {
+          "description": "details of the tool",
+          "type": "string"
+        },
+        "post_date": {
+          "description": "date tool was posted",
+          "type": "string"
+        },
+        "url": {
+          "description": "primary url for tool",
+          "type": "string"
+        }
+      }
+    },    
+    "locations": {
+      "properties": {
+        "location_id": {
+          "description": "id for the location",
+          "type": "integer",
+          "format": "id"
+        },
+        "description": {
+          "description": "description of the location",
+          "type": "string"
+        },
+        "address1": {
+          "description": "first address for the location",
+          "type": "string"
+        },
+        "address2": {
+          "description": "second address for the location",
+          "type": "string"
+        },
+        "city": {
+          "description": "city for the location",
+          "type": "string"
+        },
+        "state": {
+          "description": "state for the location",
+          "type": "string"
+        },
+        "post_code": {
+          "description": "postal code for the location",
+          "type": "string"
+        },
+        "country": {
+          "description": "country for the location",
+          "type": "string"
+        },
+        "latitude": {
+          "description": "latitude for the location",
+          "type": "string"
+        },
+        "longitude": {
+          "description": "longitude for the location",
           "type": "string"
         }
       }
