@@ -19,7 +19,7 @@
       "get": {
         "summary": "get people",
         "description": "retrieves all people, with filter by keyword",
-        "operationId": "getPeoples",
+        "operationId": "getPeople",
         "parameters": [
           {
             "name": "appid",
@@ -55,7 +55,7 @@
           }
         },
         "tags": [
-          "Peoples"
+          "People"
         ]
       },
       "post": {
@@ -78,100 +78,65 @@
             "type": "string"
           },
           {
-            "name": "name",
+            "name": "full_name",
             "in": "formData",
-            "description": "name of people",
+            "description": "full name o fperson",
             "required": false,
             "type": "string"
           },
           {
-            "name": "details",
+            "name": "first_name",
             "in": "formData",
-            "description": "details for the people",
+            "description": "first name of person",
             "required": false,
             "type": "string"
           },
           {
-            "name": "summary",
+            "name": "last_name",
             "in": "formData",
-            "description": "sumary of the people",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "url",
-            "in": "formData",
-            "description": "unique url for the people",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "phone",
-            "in": "formData",
-            "description": "phone for the people",
+            "description": "last name of person",
             "required": false,
             "type": "string"
           },
           {
             "name": "email",
             "in": "formData",
-            "description": "email for the people",
-            "required": false,
+            "description": "email for person",
+            "required": true,
             "type": "string"
-          },
-          {
-            "name": "address",
-            "in": "formData",
-            "description": "primary address of the people",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "city",
-            "in": "formData",
-            "description": "primary city of the people",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "state",
-            "in": "formData",
-            "description": "primary state of the people",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "postal_code",
-            "in": "formData",
-            "description": "primary postal code of the people",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "country",
-            "in": "formData",
-            "description": "primary country of the people",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "rank",
-            "in": "formData",
-            "description": "ranking for the people",
-            "required": false,
-            "type": "integer"
           },
           {
             "name": "location",
             "in": "formData",
-            "description": "primary location of the people",
+            "description": "location for person",
             "required": false,
             "type": "string"
           },
           {
+            "name": "bio",
+            "in": "formData",
+            "description": "bio for person",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ranking",
+            "in": "formData",
+            "description": "ranking for person",
+            "required": false,
+            "type": "integer"
+          },
+          {
             "name": "photo",
             "in": "formData",
-            "description": "primary photo of the people",
+            "description": "primary photo for person",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "company",
+            "in": "formData",
+            "description": "primary company for person",
             "required": false,
             "type": "string"
           }
@@ -188,7 +153,7 @@
           }
         },
         "tags": [
-          "Peoples"
+          "People"
         ]
       }
     },
@@ -233,7 +198,7 @@
           }
         },
         "tags": [
-          "Peoples"
+          "People"
         ]
       },
       "put": {
@@ -264,100 +229,65 @@
             "type": "string"
           },
           {
-            "name": "name",
+            "name": "full_name",
             "in": "formData",
-            "description": "name of people",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "details",
-            "in": "formData",
-            "description": "details for the people",
+            "description": "full name o fperson",
             "required": false,
             "type": "string"
           },
           {
-            "name": "summary",
+            "name": "first_name",
             "in": "formData",
-            "description": "sumary of the people",
+            "description": "first name of person",
             "required": false,
             "type": "string"
           },
           {
-            "name": "url",
+            "name": "last_name",
             "in": "formData",
-            "description": "unique url for the people",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "phone",
-            "in": "formData",
-            "description": "phone for the people",
+            "description": "last name of person",
             "required": false,
             "type": "string"
           },
           {
             "name": "email",
             "in": "formData",
-            "description": "email for the people",
-            "required": false,
+            "description": "email for person",
+            "required": true,
             "type": "string"
-          },
-          {
-            "name": "address",
-            "in": "formData",
-            "description": "primary address of the people",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "city",
-            "in": "formData",
-            "description": "primary city of the people",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "state",
-            "in": "formData",
-            "description": "primary state of the people",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "postal_code",
-            "in": "formData",
-            "description": "primary postal code of the people",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "country",
-            "in": "formData",
-            "description": "primary country of the people",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "rank",
-            "in": "formData",
-            "description": "ranking for the people",
-            "required": false,
-            "type": "integer"
           },
           {
             "name": "location",
             "in": "formData",
-            "description": "primary location of the people",
+            "description": "location for person",
             "required": false,
             "type": "string"
           },
           {
+            "name": "bio",
+            "in": "formData",
+            "description": "bio for person",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ranking",
+            "in": "formData",
+            "description": "ranking for person",
+            "required": false,
+            "type": "integer"
+          },
+          {
             "name": "photo",
             "in": "formData",
-            "description": "primary photo of the people",
+            "description": "primary photo for person",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "company",
+            "in": "formData",
+            "description": "primary company for person",
             "required": false,
             "type": "string"
           }
@@ -374,7 +304,7 @@
           }
         },
         "tags": [
-          "Peoples"
+          "People"
         ]
       },
       "delete": {
@@ -417,7 +347,7 @@
           }
         },
         "tags": [
-          "Peoples"
+          "People"
         ]
       }
     },
