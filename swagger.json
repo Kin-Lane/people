@@ -81,7 +81,7 @@
             "name": "full_name",
             "in": "formData",
             "description": "full name o fperson",
-            "required": false,
+            "required": true,
             "type": "string"
           },
           {
@@ -102,7 +102,7 @@
             "name": "email",
             "in": "formData",
             "description": "email for person",
-            "required": true,
+            "required": false,
             "type": "string"
           },
           {
@@ -232,7 +232,7 @@
             "name": "full_name",
             "in": "formData",
             "description": "full name o fperson",
-            "required": false,
+            "required": true,
             "type": "string"
           },
           {
@@ -253,7 +253,7 @@
             "name": "email",
             "in": "formData",
             "description": "email for person",
-            "required": true,
+            "required": false,
             "type": "string"
           },
           {
