@@ -18,7 +18,7 @@
     "/people/": {
       "get": {
         "summary": "get people",
-        "description": "retrieves all people, with filter by keyword",
+        "description": "get people",
         "operationId": "getPeople",
         "parameters": [
           {
@@ -59,8 +59,8 @@
         ]
       },
       "post": {
-        "summary": "add new people",
-        "description": "Adds a new people",
+        "summary": "add new person",
+        "description": "add new person",
         "operationId": "addPeople",
         "parameters": [
           {
@@ -159,9 +159,9 @@
     },
     "/people/{people_id}/": {
       "get": {
-        "summary": "get people",
-        "description": "Returns the an people",
-        "operationId": "getPeople",
+        "summary": "get person",
+        "description": "get person",
+        "operationId": "getPerson",
         "parameters": [
           {
             "name": "people_id",
@@ -202,9 +202,9 @@
         ]
       },
       "put": {
-        "summary": "update people",
-        "description": "Update People",
-        "operationId": "updatePeople",
+        "summary": "update person",
+        "description": "update person",
+        "operationId": "updatePerson",
         "parameters": [
           {
             "name": "people_id",
@@ -308,9 +308,9 @@
         ]
       },
       "delete": {
-        "summary": "delete people",
-        "description": "Deletes An People",
-        "operationId": "deletePeople",
+        "summary": "delete person",
+        "description": "delete person",
+        "operationId": "deletePerson",
         "parameters": [
           {
             "name": "people_id",
@@ -354,8 +354,8 @@
     "/people/{people_id}/tags/": {
       "get": {
         "summary": "retrieve people tags",
-        "description": "Returns the tags for an people",
-        "operationId": "getpeopleTags",
+        "description": "retrieve people tags",
+        "operationId": "getPeopleTags",
         "parameters": [
           {
             "name": "people_id",
@@ -396,8 +396,8 @@
         ]
       },
       "post": {
-        "summary": "add tag to people",
-        "description": "add tag for people",
+        "summary": "add tag to person",
+        "description":  "add tag to person",
         "operationId": "addPeopleTag",
         "parameters": [
           {
@@ -449,8 +449,8 @@
     "/people/{people_id}/tags/{tag}": {
       "delete": {
         "summary": "delete a people tag",
-        "description": "deletes a tag applied to people",
-        "operationId": "deletepeopleTag",
+        "description": "delete a people tag",
+        "operationId": "deletePeopleTag",
         "parameters": [
           {
             "name": "people_id",
@@ -499,9 +499,9 @@
     },
     "/people/{people_id}/notes/": {
       "get": {
-        "summary": "retrieve an APIs notes",
-        "description": "Returns the notes for an API",
-        "operationId": "getAPINotes",
+        "summary": "retrieve an persons notes",
+        "description": "retrieve an persons notes",
+        "operationId": "getPeopelNotes",
         "parameters": [
           {
             "name": "people_id",
@@ -542,8 +542,8 @@
         ]
       },
       "post": {
-        "summary": "add an People note",
-        "description": "Add a note for the people",
+        "summary": "add an people note",
+        "description": "add an people note",
         "operationId": "addPeopleNote",
         "parameters": [
           {
@@ -602,8 +602,8 @@
     "/people/{people_id}/notes/{note_id}": {
       "delete": {
         "summary": "delete an people note",
-        "description": "Deletes a note for a people",
-        "operationId": "deleteAPINote",
+        "description": "delete an people note",
+        "operationId": "deletePeopleNote",
         "parameters": [
           {
             "name": "people_id",
@@ -653,8 +653,8 @@
     "/people/{people_id}/apis/": {
       "get": {
         "summary": "retrieve people APIs",
-        "description": "Returns the APIs for an people",
-        "operationId": "getAPIsForPeople",
+        "description": "retrieve people APIs",
+        "operationId": "getPeopleAPIs",
         "parameters": [
           {
             "name": "people_id",
@@ -695,9 +695,9 @@
         ]
       },
       "post": {
-        "summary": "add API to people",
-        "description": "add tag for people",
-        "operationId": "addPeopleTag",
+        "summary": "add people API",
+        "description":  "add people API",
+        "operationId": "addPeopleAPI",
         "parameters": [
           {
             "name": "people_id",
@@ -748,7 +748,7 @@
     "/people/{people_id}/apis/{api_id}": {
       "delete": {
         "summary": "delete a people API",
-        "description": "deletes a API applied to people",
+        "description": "delete a people API",
         "operationId": "deletePeopleAPI",
         "parameters": [
           {
@@ -798,8 +798,8 @@
     },
     "/people/{people_id}/buildingblocks/": {
       "get": {
-        "summary": "retrieve people building blocks",
-        "description": "Returns the building blocks for an people",
+        "summary": "get people building blocks",
+        "description": "get people building blocks",
         "operationId": "getPeopleBuildingBlocks",
         "parameters": [
           {
@@ -842,7 +842,7 @@
       },
       "post": {
         "summary": "add building block to people",
-        "description": "add building block for people",
+        "description": "add building block to people",
         "operationId": "addPeopleBuildingBlock",
         "parameters": [
           {
@@ -910,8 +910,8 @@
     "/people/{people_id}/buildingblocks/{building_block_id}": {
       "delete": {
         "summary": "delete a people building block",
-        "description": "deletes a building block applied to people",
-        "operationId": "deletepeopleTag",
+        "description": "delete a people building block",
+        "operationId": "deletePeopleBuildingBlock",
         "parameters": [
           {
             "name": "people_id",
@@ -961,7 +961,7 @@
     "/people/{people_id}/tools/": {
       "get": {
         "summary": "retrieve people tools",
-        "description": "Returns the tols for an people",
+        "description": "retrieve people tools",
         "operationId": "getPeopleTools",
         "parameters": [
           {
@@ -1004,7 +1004,7 @@
       },
       "post": {
         "summary": "add tool to people",
-        "description": "add tool for people",
+        "description": "add tool to people",
         "operationId": "addPeopleTool",
         "parameters": [
           {
@@ -1064,8 +1064,8 @@
     "/people/{people_id}/tools/{tool_id}": {
       "delete": {
         "summary": "delete a people tool",
-        "description": "deletes a tool applied to people",
-        "operationId": "getPeopleToo",
+        "description": "delete a people tool",
+        "operationId": "getPeopleTool",
         "parameters": [
           {
             "name": "people_id",
@@ -1114,8 +1114,8 @@
     },
     "/people/{people_id}/images/": {
       "get": {
-        "summary": "retrieve people images",
-        "description": "Returns the images for an people",
+        "summary": "get people images",
+        "description": "get people images",
         "operationId": "getPeopleImages",
         "parameters": [
           {
@@ -1157,8 +1157,8 @@
         ]
       },
       "post": {
-        "summary": "add image to people",
-        "description": "add image for people",
+        "summary": "add people image",
+        "description": "add people image",
         "operationId": "addPeopleImage",
         "parameters": [
           {
@@ -1224,7 +1224,7 @@
     "/people/{people_id}/images/{image_id}": {
       "delete": {
         "summary": "delete a people image",
-        "description": "deletes a image applied to people",
+        "description": "delete a people image",
         "operationId": "deletePeopleImage",
         "parameters": [
           {
@@ -1274,8 +1274,8 @@
     },
     "/people/{people_id}/locations/": {
       "get": {
-        "summary": "retrieve people locations",
-        "description": "Returns the locations for an people",
+        "summary": "get people locations",
+        "description": "get people locations",
         "operationId": "getPeopleLocations",
         "parameters": [
           {
@@ -1317,8 +1317,8 @@
         ]
       },
       "post": {
-        "summary": "add location to people",
-        "description": "add location for people",
+        "summary": "add people locations",
+        "description": "add people locations",
         "operationId": "addPeopleLocation",
         "parameters": [
           {
@@ -1425,9 +1425,9 @@
     },
     "/people/{people_id}/locations/{location_id}": {
       "delete": {
-        "summary": "delete a people tag",
-        "description": "deletes a tag applied to people",
-        "operationId": "deletepeopleTag",
+        "summary": "delete a people location",
+        "description": "delete a people location",
+        "operationId": "deletePeopleLocation",
         "parameters": [
           {
             "name": "people_id",
@@ -1476,8 +1476,8 @@
     },
     "/people/{people_id}/logs/": {
       "get": {
-        "summary": "retrieve people logs",
-        "description": "Returns the logs for an people",
+        "summary": "get people logs",
+        "description": "get people logs",
         "operationId": "getPeopleLogs",
         "parameters": [
           {
@@ -1519,9 +1519,9 @@
         ]
       },
       "post": {
-        "summary": "add log to people",
-        "description": "add tag for people",
-        "operationId": "addPeopleTag",
+        "summary": "add people log",
+        "description": "add people log",
+        "operationId": "addPeopleLog",
         "parameters": [
           {
             "name": "people_id",
@@ -1579,7 +1579,7 @@
     "/people/{people_id}/logs/{log_id}": {
       "delete": {
         "summary": "delete a people log",
-        "description": "deletes a log applied to people",
+        "description": "delete a people log",
         "operationId": "deletePeopleLog",
         "parameters": [
           {
@@ -1629,8 +1629,8 @@
     },
     "/people/{people_id}/screenshots/": {
       "get": {
-        "summary": "retrieve people screenshots",
-        "description": "Returns the screenshots for an people",
+        "summary": "get people screenshots",
+        "description":"get people screenshots",
         "operationId": "getPeopleScreenshots",
         "parameters": [
           {
@@ -1672,9 +1672,9 @@
         ]
       },
       "post": {
-        "summary": "add screenshots to people",
-        "description": "add screenshots for people",
-        "operationId": "addPeopleTag",
+        "summary": "add people screenshots",
+        "description": "add people screenshots",
+        "operationId": "addPeopleScreenshot",
         "parameters": [
           {
             "name": "people_id",
@@ -1739,7 +1739,7 @@
     "/people/{people_id}/screenshots/{screenshot_id}": {
       "delete": {
         "summary": "delete a people screenshot",
-        "description": "deletes a screenshot applied to people",
+        "description": "delete a people screenshot",
         "operationId": "deletePeopleScreenshot",
         "parameters": [
           {
@@ -1790,8 +1790,8 @@
     "/people/{people_id}/urls/": {
       "get": {
         "summary": "retrieve people url",
-        "description": "Returns the tags for an people",
-        "operationId": "getpeopleTags",
+        "description": "retrieve people url",
+        "operationId": "getpeopleURLs",
         "parameters": [
           {
             "name": "people_id",
@@ -1832,9 +1832,9 @@
         ]
       },
       "post": {
-        "summary": "add tag to people",
-        "description": "add tag for people",
-        "operationId": "addPeopleTag",
+        "summary": "add people URL",
+        "description": "add people URL",
+        "operationId": "addPeopleURL",
         "parameters": [
           {
             "name": "people_id",
@@ -1899,8 +1899,8 @@
     "/people/{people_id}/urls/{url_id}": {
       "delete": {
         "summary": "delete a people url",
-        "description": "deletes a tag applied to people",
-        "operationId": "deletepeopleTag",
+        "description": "delete a people url",
+        "operationId": "deletePeopleURL",
         "parameters": [
           {
             "name": "people_id",
