@@ -25,7 +25,7 @@ $app->get($route, function ()  use ($app){
 	while ($Database = mysql_fetch_assoc($DatabaseResult))
 		{
 
-		$people_id = $Database['Profile_ID'];
+		$people_id = $Database['ID'];
 		$full_name = $Database['Full_Name'];
 		$first_name = $Database['First_Name'];
 		$last_name = $Database['Last_Name'];
