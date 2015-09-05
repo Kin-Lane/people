@@ -39,6 +39,7 @@ $app->get($route, function ()  use ($app){
 
 		// manipulation zone
 
+		$host = $_SERVER['HTTP_HOST'];
 		$people_id = prepareIdOut($people_id,$host);
 
 		$F = array();
