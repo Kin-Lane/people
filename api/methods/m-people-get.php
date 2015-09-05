@@ -1,12 +1,16 @@
 <?php
 $route = '/people/';
-$app->get($route, function ()  use ($app){
+$app->get($route, function ()  use ($app,$Plan){
 
 	$ReturnObject = array();
 
 	if(isset($_REQUEST['query'])){ $query = trim(mysql_real_escape_string($_REQUEST['query'])); } else { $query = '';}
 
-	if($query!='')
+	if($Plan=='Public')
+		{
+		$Query = "SELECT * FROM profile WHERE First_Name = 'Kin' AND Last_Name = 'Lane'";
+		}
+	elseif($query!='')
 		{
 		$Query = "SELECT * FROM profile WHERE Full_Name LIKE '%" . $query . "%' OR Bio LIKE '%" . $query . "%'";
 		}
