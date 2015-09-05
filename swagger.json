@@ -397,7 +397,7 @@
       },
       "post": {
         "summary": "add tag to person",
-        "description":  "add tag to person",
+        "description": "add tag to person",
         "operationId": "addPeopleTag",
         "parameters": [
           {
@@ -696,7 +696,7 @@
       },
       "post": {
         "summary": "add people API",
-        "description":  "add people API",
+        "description": "add people API",
         "operationId": "addPeopleAPI",
         "parameters": [
           {
@@ -1630,7 +1630,7 @@
     "/people/{people_id}/screenshots/": {
       "get": {
         "summary": "get people screenshots",
-        "description":"get people screenshots",
+        "description": "get people screenshots",
         "operationId": "getPeopleScreenshots",
         "parameters": [
           {
@@ -2278,7 +2278,7 @@
           "type": "string"
         }
       }
-    },    
+    },
     "locations": {
       "properties": {
         "location_id": {
