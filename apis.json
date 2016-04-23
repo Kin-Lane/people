@@ -1,4 +1,4 @@
-[{
+{
 	"name": "Kin Lane People API",
 	"description": "I try to keep track of interesting people who are doing things with APIs. I do not track any personal details about people in my system. My goal is to ekep track of the public details like Twitter, LinkedIN, and Github accoutns, as well as personal blogs. Sometimes the best information about platforms, comes from the individuals who operate, and integrate with them. This API provides access to what I think are some of the interesting people in the world of aPis.",
 	"image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-users-male-female.png",
@@ -6,7 +6,7 @@
 	"tags": ["Kin Lane People API"],
 	"created": "2016-04-04",
 	"modified": "2016-04-04",
-	"url": "https://kin-lane.github.io/people/"
+	"url": "https://kin-lane.github.io/people/",
 	"specificationVersion": "0.14",
 	"apis": [{
 		"name": "Kin Lane People API",
@@ -117,4 +117,4 @@
 		"x-twitter": "apievangelist",
 		"email": "info@apievangelist.com"
 	}]
-}]
+}
